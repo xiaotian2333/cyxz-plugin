@@ -4,3 +4,7 @@ pnpm-lock.yaml
 
 # 用户配置文件
 config/*
+
+# 编辑器文件
+folder-alias.json
+private-folder-alias.json

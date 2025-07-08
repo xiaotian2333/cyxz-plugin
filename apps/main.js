@@ -64,7 +64,7 @@ export class dimtown extends plugin {
                     fnc: 'sifu'
                 },
                 {
-                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?jk$/,
+                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?(jk|JK)$/,
                     fnc: 'jk'
                 },
             ]
