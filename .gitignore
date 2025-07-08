@@ -1,0 +1,6 @@
+# node相关文件
+node_modules/*
+pnpm-lock.yaml
+
+# 用户配置文件
+config/*
