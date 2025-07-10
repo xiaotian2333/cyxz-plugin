@@ -36,7 +36,7 @@ async function main(url = 'https://dimtown.com/vipcos', user_id) {
         msgList.push({
             user_id: user_id,
             nickname: '图片',
-            message: segment.image(item.src)
+            message: await segment.image(item.src)
         });
     }
 
@@ -67,6 +67,10 @@ export class dimtown extends plugin {
                     reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?(jk|JK)$/,
                     fnc: 'jk'
                 },
+                {
+                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?汉服$/,
+                    fnc: 'hanfu'
+                }
             ]
         })
     }
@@ -85,5 +89,9 @@ export class dimtown extends plugin {
 
     async jk(e) {
         e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/jk/page/${random(8)}`, e.user_id)))
+    }
+
+    async hanfu(e) {
+        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/hanfu/page/${random(4)}`, e.user_id)))
     }
 }
