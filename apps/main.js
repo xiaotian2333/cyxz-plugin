@@ -70,28 +70,42 @@ export class dimtown extends plugin {
                 {
                     reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?汉服$/,
                     fnc: 'hanfu'
-                }
+                },
+                {
+                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?(lolita|洛丽塔)$/,
+                    fnc: 'lolita'
+                },
             ]
         })
     }
 
     async cos(e) {
-        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/vipcos/page/${random(296)}`, e.user_id)))
+        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/cosplay/page/${random(296)}`, e.user_id)))
+        return true
     }
 
     async pixiv(e) {
         e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/pixiv-illustration/page/${random(58)}`, e.user_id)))
+        return true
     }
 
     async sifu(e) {
         e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/sifu/page/${random(55)}`, e.user_id)))
+        return true
     }
 
     async jk(e) {
         e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/jk/page/${random(8)}`, e.user_id)))
+        return true
     }
 
     async hanfu(e) {
         e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/hanfu/page/${random(4)}`, e.user_id)))
+        return true
+    }
+
+    async lolita(e) {
+        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/lolita/page/${random(12)}`, e.user_id)))
+        return true
     }
 }
