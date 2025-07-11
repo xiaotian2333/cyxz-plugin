@@ -1,16 +1,12 @@
 # <center>次元小镇插件</center>
-
-一个COS图插件  
-抓取[次元小镇](https://dimtown.com/vipcos)的COS图并发送
+  
+抓取[次元小镇](https://dimtown.com/)的各类图片
 
 > GitCode地址仅为镜像使用，如有提issues或pr需求请[前往GitHub](https://github.com/xiaotian2333/cyxz-plugin)
 
 ## 已实现功能
 
-| 功能名称 | 完善程度 |
-|--------|-----------|
-| 帮助 | 中 |
-| 各类图片发送 | 高 |
+![help](https://img.kookapp.cn/assets/2025-07/11/kB8oT30paH0qo0hr.png)
 
 ## 安装与更新
 
