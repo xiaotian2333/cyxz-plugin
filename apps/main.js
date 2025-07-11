@@ -16,7 +16,7 @@ function random(sum = 10) {
  * @param {int} user_id 发送消息的用户ID
  * @returns {Promise<Array>} 返回一个包含图片信息的数组，每个元素包含图片的src属性、原文链接和标题
  */
-async function main(url = 'https://dimtown.com/vipcos', user_id) {
+async function main(url = 'https://dimtown.com/vipcos', user_id = 8000000) {
     const img_data = await one_get(url)
     let msgList = []
 
@@ -47,7 +47,6 @@ export class dimtown extends plugin {
     constructor() {
         super({
             name: '次元小镇',
-            dsc: '随机获取一组COS图',
             event: 'message',
             priority: 5000,
             rule: [
@@ -75,6 +74,21 @@ export class dimtown extends plugin {
                     reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?(lolita|洛丽塔)$/,
                     fnc: 'lolita'
                 },
+                {
+                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?头像$/,
+                    fnc: 'miaotx'
+                },
+                {
+                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?(手机|电脑|平板)?壁纸$/,
+                    fnc: 'bizhi'
+                },
+
+                // 以下是测试指令
+                {
+                    reg: /^#(次元|小镇|次元小镇|cy|xz|cyxz)(测试|test)/,
+                    fnc: 'test',
+                    permission: 'master'
+                }
             ]
         })
     }
@@ -106,6 +120,41 @@ export class dimtown extends plugin {
 
     async lolita(e) {
         e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/lolita/page/${random(12)}`, e.user_id)))
+        return true
+    }
+
+    async miaotx(e) {
+        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/miaotx/page/${random(13)}`, e.user_id)))
+        return true
+    }
+
+    async bizhi(e) {
+        const msg = e.msg
+        let url, maxPage
+
+        if (msg.includes('手机')) {
+            url = 'https://dimtown.com/acg-wallpaper/page/'
+            maxPage = 50
+        } else if (msg.includes('电脑') || msg.includes('平板')) {
+            url = 'https://dimtown.com/pc-wallpaper/page/'
+            maxPage = 14
+        } else {
+            url = 'https://dimtown.com/bizhi/page/'
+            maxPage = 63
+        }
+
+        const pageUrl = `${url}${random(maxPage)}`
+        const forwardMsg = await Bot.makeForwardMsg(await main(pageUrl, e.user_id))
+        e.reply(forwardMsg)
+        return true
+    }
+
+    // 这个是测试用的
+    async test(e) {
+        let msg = e.msg
+        msg = msg.replace(/#(次元|小镇|次元小镇|cy|xz|cyxz)(测试|test)/, '')
+        logger.info(msg)
+        e.reply(await Bot.makeForwardMsg(await main(msg, e.user_id)))
         return true
     }
 }
