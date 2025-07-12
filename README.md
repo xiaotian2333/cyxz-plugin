@@ -6,7 +6,7 @@
 
 ## 已实现功能
 
-![help](https://img.kookapp.cn/assets/2025-07/11/kB8oT30paH0qo0hr.png)
+![help](https://img.kookapp.cn/assets/2025-07/12/LQe5HEPtG50qo0w7.png)
 
 ## 安装与更新
 

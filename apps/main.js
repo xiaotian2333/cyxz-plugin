@@ -79,8 +79,16 @@ export class dimtown extends plugin {
                     fnc: 'miaotx'
                 },
                 {
-                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?(手机|电脑|平板)?壁纸$/,
+                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?(手机|电脑|平板|汽车|游戏|动漫|风景)?壁纸$/,
                     fnc: 'bizhi'
+                },
+                {
+                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?插画$/,
+                    fnc: 'illustration'
+                },
+                {
+                    reg: /^#?(次元|小镇|次元小镇|cy|xz|cyxz)?(图集|画册|图集画册)$/,
+                    fnc: 'tujihuace'
                 },
 
                 // 以下是测试指令
@@ -94,12 +102,22 @@ export class dimtown extends plugin {
     }
 
     async cos(e) {
-        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/cosplay/page/${random(296)}`, e.user_id)))
+        const url_list = [
+            `https://dimtown.com/cosplay/page/${random(296)}`,
+            `https://mikagogo.com/cosplay/page/${random(143)}`
+        ]
+        const url = url_list[random(url_list.length - 1) - 1]
+        e.reply(await Bot.makeForwardMsg(await main(url, e.user_id)))
         return true
     }
 
     async pixiv(e) {
-        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/pixiv-illustration/page/${random(58)}`, e.user_id)))
+        const url_list = [
+            `https://dimtown.com/pixiv-illustration/page/${random(58)}`,
+            `https://mikagogo.com/pixiv-illustration/page/${random(30)}`
+        ]
+        const url = url_list[random(url_list.length - 1) - 1]
+        e.reply(await Bot.makeForwardMsg(await main(url, e.user_id)))
         return true
     }
 
@@ -130,25 +148,51 @@ export class dimtown extends plugin {
 
     async bizhi(e) {
         const msg = e.msg
-        let url, maxPage
+        let url_list = []
 
         if (msg.includes('手机')) {
-            url = 'https://dimtown.com/acg-wallpaper/page/'
-            maxPage = 50
+            url_list.push(`https://dimtown.com/acg-wallpaper/page/${random(50)}`)
+            url_list.push(`https://mikagogo.com/acg-wallpaper/page/${random(34)}`)
+            url_list.push(`https://yiimii.com/m-wallpaper/page/${random(10)}`)
         } else if (msg.includes('电脑') || msg.includes('平板')) {
-            url = 'https://dimtown.com/pc-wallpaper/page/'
-            maxPage = 14
+            url_list.push(`https://dimtown.com/pc-wallpaper/page/${random(14)}`)
+            url_list.push(`https://mikagogo.com/pc-wallpaper/page/${random(2)}`)
+            url_list.push(`https://yiimii.com/pc-wallpaper/page/${random(8)}`)
+        } else if (msg.includes('汽车')) {
+            url_list.push(`https://yiimii.com/car-wallpaper/page/${random(1)}`)
+        } else if (msg.includes('游戏')) {
+            url_list.push(`https://yiimii.com/game-wallpaper/page/${random(8)}`)
+            url_list.push(`https://yiimii.com/tag/ys-wallpaper/page/${random(2)}`)
+            url_list.push(`https://yiimii.com/tag/sr/page/${random(2)}`)
+            url_list.push(`https://yiimii.com/tag/bilandangan/page/${random(2)}`)
+        } else if (msg.includes('动漫')) {
+            url_list.push(`https://yiimii.com/anime-wallpaper/page/${random(4)}`)
+            url_list.push(`https://mikagogo.com/acg-wallpaper/page/${random(34)}`)
+            url_list.push(`https://dimtown.com/bizhi/page/${random(63)}`)
+        } else if (msg.includes('风景')) {
+            url_list.push(`https://yiimii.com/fengjing-wallpaper/page/${random(2)}`)
         } else {
-            url = 'https://dimtown.com/bizhi/page/'
-            maxPage = 63
+            url_list.push(`https://dimtown.com/bizhi/page/${random(63)}`)
+            url_list.push(`https://yiimii.com/meinv-wallpaper/page/${random(2)}`)
+            url_list.push(`https://yiimii.com/fengjing-wallpaper/page/${random(2)}`)
         }
-
-        const pageUrl = `${url}${random(maxPage)}`
-        const forwardMsg = await Bot.makeForwardMsg(await main(pageUrl, e.user_id))
+        
+        const url = url_list[random(url_list.length - 1) - 1]
+        logger.info(`合并为${url_list}\n\n输出为${url}`)
+        const forwardMsg = await Bot.makeForwardMsg(await main(url, e.user_id))
         e.reply(forwardMsg)
         return true
     }
 
+    async illustration(e) {
+        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/illustration/page/${random(34)}`, e.user_id)))
+        return true
+    }
+
+    async tujihuace(e) {
+        e.reply(await Bot.makeForwardMsg(await main(`https://dimtown.com/tujihuace/page/${random(2)}`, e.user_id)))
+        return true
+    }
     // 这个是测试用的
     async test(e) {
         let msg = e.msg
