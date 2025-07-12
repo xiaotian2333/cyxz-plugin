@@ -178,7 +178,6 @@ export class dimtown extends plugin {
         }
         
         const url = url_list[random(url_list.length - 1) - 1]
-        logger.info(`合并为${url_list}\n\n输出为${url}`)
         const forwardMsg = await Bot.makeForwardMsg(await main(url, e.user_id))
         e.reply(forwardMsg)
         return true
