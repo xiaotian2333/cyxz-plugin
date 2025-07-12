@@ -10,11 +10,7 @@
 
 ## 安装与更新
 
-### 使用Git安装（推荐）
-
-**请将 `cyxz-plugin` 放置在 Yunzai-Bot 的 plugins 目录下，重启 Yunzai-Bot 后即可使用<br>**
-
-**请使用 git 进行安装，以方便后续升级。在 Yunzai-Bot 根目录夹打开终端，运行下述指令之一<br>**
+### 使用Git安装
 
 #### **使用GitHub**
 
@@ -24,15 +20,33 @@ git clone --depth=1 https://github.com/xiaotian2333/cyxz-plugin ./plugins/cyxz-p
 
 #### **使用GitCode**
 
+gitcode为镜像仓库，更新可能会有延迟
+
 ``` bash
 git clone --depth=1 https://gitcode.com/yunzai/cyxz-plugin ./plugins/cyxz-plugin/
 ```
 
-### 手工下载安装（不推荐）
+### 安装依赖
 
-**手工下载安装包，解压后将`cyxz-plugin-master`更名为`cyxz-plugin`，然后放置在Yunzai的plugins目录内<br>**
+``` bash
+pnpm install
+```
 
-**虽然此方式能够使用，不利于后续升级，故不推荐使用<br>**
+<details>
+<summary>其他安装方式</summary>
+
+### 下载ZIP包安装（不推荐）
+
+下载ZIP包，解压后将`cyxz-plugin-master`更名为`cyxz-plugin`，然后放置在Yunzai的plugins目录内
+
+然后执行此命令安装依赖
+
+``` bash
+pnpm install
+```
+
+**虽然此方式能够使用，但不利于后续升级，故不推荐使用<br>**
+</details>
 
 ## 加入群聊
 
