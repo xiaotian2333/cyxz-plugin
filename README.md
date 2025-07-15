@@ -1,6 +1,6 @@
 # <center>次元小镇插件</center>
   
-抓取[次元小镇](https://dimtown.com/)的各类图片
+Yunzai-Bot插件，主要功能为抓取[次元小镇](https://dimtown.com/)及其附属网站的各类图片
 
 > GitCode地址仅为镜像使用，如有提issues或pr需求请[前往GitHub](https://github.com/xiaotian2333/cyxz-plugin)
 
@@ -37,7 +37,7 @@ pnpm install
 
 ### 下载ZIP包安装（不推荐）
 
-下载ZIP包，解压后将`cyxz-plugin-master`更名为`cyxz-plugin`，然后放置在Yunzai的plugins目录内
+下载ZIP包，解压后将文件夹更名为`cyxz-plugin`，然后放置在Yunzai的plugins目录内
 
 然后执行此命令安装依赖
 
